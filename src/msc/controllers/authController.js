@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const Services = require('../services');
 
 const registerController = async (req, res) => {
@@ -14,7 +13,13 @@ const registerController = async (req, res) => {
 };
 
 const loginController = async (req, res) => {
-  return undefined;
+  try {
+    const { email } = req.body;
+    const token = await Services.loginService(email);
+    return res.status(200).json({ token });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
     
 module.exports = {

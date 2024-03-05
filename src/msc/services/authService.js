@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const { User } = require('../../../models');
 
 const registerService = async (user) => {
@@ -5,8 +6,10 @@ const registerService = async (user) => {
   return newUser;
 };
 
-const loginService = async (req, res) => {
-  return undefined;
+const loginService = async (email) => {
+  const user = await User.findOne({ where: { email } });
+  const token = jwt.sign({ id: user.id }, 'secret_key');
+  return token;
 };
     
 module.exports = {
