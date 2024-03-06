@@ -1,9 +1,9 @@
 const express = require('express');
 const authRouter = express.Router();
-const { registerController, loginController } = require('../msc/controllers/authController');
-const { loginValidation } = require('../msc/middleware/loginMiddleware');
+const Controller = require('../msc/controllers/authController');
+const Middleware = require('../msc/middleware/loginMiddleware');
 
-authRouter.post('/register', registerController);
-authRouter.post('/login', loginValidation, loginController);
+authRouter.post('/register', Controller.registerController);
+authRouter.post('/login', Middleware.loginValidation, Controller.loginController);
 
 module.exports = authRouter;

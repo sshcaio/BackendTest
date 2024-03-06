@@ -4,7 +4,8 @@ const routes = require('./routes');
 const app = express();
 
 app.use(express.json());
-app.use('/auth', routes.authRouter)
+app.use('/auth', routes.authRouter);
+app.use('/products', routes.productRouter);
 
 app.get('/', (_req, res) => {
   res.json({
