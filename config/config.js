@@ -9,4 +9,4 @@ pool.connect((err) => {
   console.log('connected');
 });
 
-module.exports = connection;
+module.exports = pool;
