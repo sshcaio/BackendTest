@@ -10,13 +10,18 @@ const options = {
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false,
     },
   },
 };
 
 module.exports = {
   development: {
+    ...options,
+  },
+  test: {
+    ...options,
+  },
+  production: {
     ...options,
   },
 };
