@@ -6,7 +6,6 @@ const options = {
   database: process.env.POSTGRES_DATABASE,
   host: process.env.POSTGRES_HOST,
   dialect: "postgres",
-  native: true,
   dialectOptions: {
     ssl: {
       require: true,
