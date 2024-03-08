@@ -1,26 +1,19 @@
 require('dotenv').config();
+import pg from 'pg';
+const { Pool } = pg;
 
-const options = {
-  username: process.env.POSTGRES_USER,
+const pool = new Pool({
+  host: process.env.POSTGRES_HOST,
+  user: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
-  host: process.env.POSTGRES_HOST,
-  dialect: "postgres",
+  connectionString: process.env.POSTGRES_URL,
+  dialect: 'postgres',
   dialectOptions: {
     ssl: {
       require: true,
     },
   },
-};
+});
 
-module.exports = {
-  development: {
-    ...options,
-  },
-  test: {
-    ...options,
-  },
-  production: {
-    ...options,
-  },
-};
+module.exports = pool;
