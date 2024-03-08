@@ -1,6 +1,5 @@
 require('dotenv').config();
-import pg from 'pg';
-const { Pool } = pg;
+const { Pool } = require('pg');
 
 const pool = new Pool({
   host: process.env.POSTGRES_HOST,
