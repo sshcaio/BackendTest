@@ -1,4 +1,5 @@
 require('dotenv').config();
+const pg = require('pg');
 
 const options = {
   username: process.env.POSTGRES_USER,
@@ -6,6 +7,7 @@ const options = {
   database: process.env.POSTGRES_DATABASE,
   host: process.env.POSTGRES_HOST,
   dialect: "postgres",
+  dialectModule: pg,
   dialectOptions: {
     ssl: {
       require: true,
